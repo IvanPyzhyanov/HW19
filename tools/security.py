@@ -8,7 +8,7 @@ from flask import current_app, request
 from flask_restx import abort
 
 def generate_token(data):
-    min30 = datetime.datetime.utcnow() + datetime.datetime(minutes=30)
+    min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
     data["exp"] = calendar.timegm(min30.timetuple())
     access_token = jwt.encode(data, current_app.config["SECRET_KEY"], algorithm=current_app.config["JWT_ALGORITHM"])
     days130 = datetime.datetime.utcnow() + datetime.timedelta(days=130)
