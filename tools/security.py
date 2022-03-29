@@ -10,10 +10,10 @@ from flask_restx import abort
 def generate_token(data):
     min30 = datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
     data["exp"] = calendar.timegm(min30.timetuple())
-    access_token = jwt.encode(data, current_app.config["SECRET_KEY"], algorithm=current_app.config["JWT_ALGORITHM"])
+    access_token = jwt.encode(data, current_app.config["SECRET_HERE"], algorithm=current_app.config["JWT_ALGORITHM"])
     days130 = datetime.datetime.utcnow() + datetime.timedelta(days=130)
     data["exp"] = calendar.timegm(days130.timetuple())
-    refresh_token = jwt.encode(data, current_app.config["SECRET_KEY"], algorithm=current_app.config["JWT_ALGORITHM"])
+    refresh_token = jwt.encode(data, current_app.config["SECRET_HERE"], algorithm=current_app.config["JWT_ALGORITHM"])
     return {'access_token': access_token, 'refresh_token': refresh_token}
 
 def compare_password(password_hash, other_password):

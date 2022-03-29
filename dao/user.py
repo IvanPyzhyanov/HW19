@@ -12,7 +12,7 @@ class UserDAO:
         return self.session.query(User).all()
 
     def get_by_username(self, val):
-        return self.session.query(User).filter(User.username == val).all()
+        return self.session.query(User).filter(User.username == val).one()
 
     def get_by_role(self, val):
         return self.session.query(User).filter(User.role == val).all()

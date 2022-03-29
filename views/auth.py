@@ -5,13 +5,13 @@ from implemented import auth_service
 
 auth_ns = Namespace('auth')
 
-@auth_ns.route('/auth')
+@auth_ns.route('/login')
 class AuthView(Resource):
     def post(self):
         req_json = request.json
 
-        username = req_json.get("username", None)
-        password = req_json.get("password", None)
+        username = req_json.get("username")
+        password = req_json.get("password")
 
         if None in [username, password]:
             return "", 400

@@ -21,7 +21,7 @@ class AuthService:
 
         data = {
             "username": user.username,
-            "role": user.password
+            "password": user.password
         }
 
         return generate_token(data)
