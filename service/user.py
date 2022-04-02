@@ -1,4 +1,5 @@
 from dao.user import UserDAO
+from tools.security import generate_password
 
 
 class UserService:
@@ -23,13 +24,12 @@ class UserService:
     def get_by_role(self, val):
         return self.dao.get_by_role(val)
 
-
     def create(self, user_id):
-        user_id['password'] = self.generate_password(user_id["password"])
+        user_id['password'] = generate_password(user_id["password"])
         return self.dao.create(user_id)
 
     def update(self, username):
-        username['password'] = self.generate_password(username["password"])
+        username['password'] = generate_password(username["password"])
         self.dao.update(username)
         return self.dao
 

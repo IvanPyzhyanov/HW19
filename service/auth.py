@@ -16,7 +16,7 @@ class AuthService:
             raise abort(401)
 
         if not is_refresh:
-            if not compare_password(user[0].password, password):
+            if not compare_password(user.password, password):
                 abort(400)
 
         data = {
